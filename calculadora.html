@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Moderna</title>
+    <title>Calculadora da Nathália</title>
     <style>
         /* Estilização Geral da Página */
         body {
@@ -12,28 +12,38 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #121214;
+            background-color: #ffe6f0; /* Fundo da página rosa claro */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         /* Estrutura da Calculadora */
         .calculadora {
-            background-color: #202024;
+            background-color: #ffb6c1; /* Corpo da calculadora rosa pastel */
             padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(219, 112, 147, 0.4);
             width: 320px;
+        }
+
+        /* Topo com o Nome da Nathália */
+        .marca-nathalia {
+            text-align: center;
+            color: #d11a5b; /* Texto rosa escuro */
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
         }
 
         /* Visor de Exibição */
         .visor {
             width: 100%;
-            height: 60px;
-            background-color: #121214;
-            border: none;
-            border-radius: 8px;
-            color: #ffffff;
-            font-size: 2rem;
+            height: 65px;
+            background-color: #fff0f5; /* Fundo do visor rosa bem clarinho */
+            border: 2px solid #ff69b4;
+            border-radius: 12px;
+            color: #d11a5b; /* Números em rosa escuro */
+            font-size: 2.2rem;
             text-align: right;
             padding: 0 15px;
             box-sizing: border-box;
@@ -47,58 +57,70 @@
             gap: 10px;
         }
 
-        /* Botões Gerais */
+        /* Botões Numéricos */
         button {
             height: 60px;
             border: none;
-            border-radius: 8px;
-            font-size: 1.25rem;
+            border-radius: 10px;
+            font-size: 1.3rem;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.2s;
-            color: #ffffff;
-            background-color: #29292e;
+            transition: background 0.2s, transform 0.1s;
+            color: #d11a5b;
+            background-color: #fff; /* Botões brancos para dar contraste */
+            box-shadow: 0 3px 0px #e6a1ac;
         }
 
         button:hover {
-            background-color: #323238;
+            background-color: #ffeef4;
+        }
+
+        button:active {
+            transform: translateY(3px);
+            box-shadow: none;
         }
 
         /* Botões de Operação (+, -, *, /) */
         .operador {
-            background-color: #ff9000;
-            color: #121214;
+            background-color: #ff69b4; /* Rosa Choque */
+            color: #ffffff;
+            box-shadow: 0 3px 0px #cc5289;
         }
 
         .operador:hover {
-            background-color: #e68200;
+            background-color: #ff4fa8;
         }
 
-        /* Botão de Limpar (C) */
+        /* Botão de Limpar (C e apagar) */
         .limpar {
-            background-color: #7c7c8a;
-            color: #ffffff;
+            background-color: #ffb3d1; /* Rosa médio */
+            color: #d11a5b;
+            box-shadow: 0 3px 0px #e69cb9;
         }
 
         .limpar:hover {
-            background-color: #9494a6;
+            background-color: #ffa3c7;
         }
 
         /* Botão de Igual (=) */
         .igual {
-            background-color: #04d361;
-            color: #121214;
-            grid-column: span 2; /* Ocupa duas colunas */
+            background-color: #d11a5b; /* Rosa Escuro Forte */
+            color: #ffffff;
+            grid-column: span 2;
+            box-shadow: 0 3px 0px #9e1343;
         }
 
         .igual:hover {
-            background-color: #04b352;
+            background-color: #b5124e;
         }
     </style>
 </head>
 <body>
 
     <div class="calculadora">
+        <!-- Nome personalizado no topo -->
+        <div class="marca-nathalia">✨ Nathália ✨</div>
+
         <!-- Visor onde os números aparecem -->
         <input type="text" id="visor" class="visor" readonly value="0">
         
@@ -133,7 +155,6 @@
     <script>
         const visor = document.getElementById('visor');
 
-        // Adiciona números ou operadores ao visor
         function adicionarCaractere(caractere) {
             if (visor.value === '0' && !isNaN(caractere)) {
                 visor.value = caractere;
@@ -142,12 +163,10 @@
             }
         }
 
-        // Limpa totalmente o visor (Botão C)
         function limparVisor() {
             visor.value = '0';
         }
 
-        // Apaga o último caractere digitado (Botão ⌫)
         function apagarUltimo() {
             if (visor.value.length > 1) {
                 visor.value = visor.value.slice(0, -1);
@@ -156,10 +175,8 @@
             }
         }
 
-        // Executa a expressão matemática contida no visor
         function calcularResultado() {
             try {
-                // O método eval calcula a string diretamente
                 const resultado = eval(visor.value);
                 visor.value = resultado;
             } catch (error) {
@@ -170,3 +187,4 @@
 
 </body>
 </html>
+
